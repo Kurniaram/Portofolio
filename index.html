@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurnia Ramadhan - Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar styles */
+        .navbar-custom {
+            background-color: #2b2b2b;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+
+        .navbar-custom a {
+            color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #f0a500;
+        }
+
+        /* Shrink effect when scrolling */
+        .navbar-shrink {
+            background-color: #000;
+            padding: 10px 20px;
+        }
+
+        /* Home section */
+        .home {
+            height: 100vh;
+            background-image: url('bg.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .home h1 {
+            font-size: 3rem;
+            color: #f0f0f0;
+            margin-top: 20px;
+        }
+
+        /* About section */
+        .about-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #2e2e2e;
+            padding: 50px 20px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        .about-profile-img-container {
+            flex-basis: 40%;
+            padding-right: 20px;
+        }
+
+        .about-profile-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-details {
+            flex-basis: 60%;
+        }
+
+        .profile-details h1 {
+            font-size: 3rem;
+            color: #f0a500;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .profile-details p {
+            font-size: 1.2rem;
+            color: #dddddd;
+            line-height: 1.8;
+        }
+
+        /* Projects section */
+        .projects-section {
+            padding: 50px 20px;
+            background-color: #1f1f1f;
+            color: #f0f0f0;
+        }
+
+        .projects-section h2 {
+            font-size: 2.5rem;
+            color: #f0a500;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .project {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .project-description {
+            font-size: 1.1rem;
+            color: #dddddd;
+            margin-bottom: 15px;
+        }
+
+        .project img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .project img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Button styles */
+        .btn-project {
+            background-color: #f0a500;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            color: white;
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block;
+            margin-top: 10px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-project:hover {
+            background-color: #c87e00;
+            transform: scale(1.05);
+        }
+
+        .btn-project:active {
+            background-color: #a85e00;
+            transform: scale(0.98);
+        }
+
+        /* Contact section */
+        .contact-section {
+            padding: 50px 20px;
+            background-color: #2e2e2e;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            color: #f0a500;
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form .form-control {
+            background-color: #444;
+            border: 1px solid #666;
+            color: #fff;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 15px 10px;
+        }
+
+        .contact-form .form-control:focus {
+            background-color: #555;
+            border-color: #f0a500;
+            box-shadow: none;
+        }
+
+        .contact-form .form-control::placeholder {
+            color: transparent;
+            /* Hide placeholder */
+        }
+
+        .contact-form .form-control:not(:placeholder-shown) {
+            padding-top: 25px;
+            /* Space for label */
+        }
+
+        .contact-form .form-control:not(:placeholder-shown)+label {
+            transform: translateY(-20px);
+            font-size: 0.8rem;
+            color: #f0a500;
+        }
+
+        .contact-form label {
+            position: absolute;
+            top: 15px;
+            left: 10px;
+            color: #aaa;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form .btn {
+            background-color: #f0a500;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .contact-form .btn:hover {
+            background-color: #c87e00;
+            transform: scale(1.05);
+        }
+
+        .contact-form .btn:active {
+            background-color: #a85e00;
+            transform: scale(0.98);
+        }
+
+        /* WhatsApp button */
+        .whatsapp-btn {
+            background-color: #25D366;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Instagram button */
+        .instagram-btn {
+            background-color: #E1306C;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: fixed;
+            bottom: 20px;
+            right: 80px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .instagram-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Section animation */
+        section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Kurnia Ramadhan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="home">
+        <div class="container text-center">
+            <img src="profil.jpeg" alt="Kurnia Ramadhan" class="profile-img">
+            <h1>Welcome to My Portfolio</h1>
+            <p>I am a Passionate Fullstack Developer</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-profile-img-container">
+            <img src="profil2.jpeg" alt="Kurnia Ramadhan" class="about-profile-img">
+        </div>
+        <div class="profile-details">
+            <h1>Kurnia Ramadhan</h1>
+            <p>Saya adalah seorang Mahasiswa di STMIK Sinar Nusantara Jurusan Informatika, Saya Mahasiswa aktif Semester
+                5 dan Saya mempunyai ketertarikan untuk mendalami ilmu di bidang IT, khususnya Saya tertarik sekali di
+                bidang Web Development sebab itu Saya mengikuti dan ikut serta dalam program SIB di LearningX ini dengan
+                program Fullstack Web Development, dengan ilmu dan skill yang sudah Saya pelajari di Universitas agar
+                lebih terampil lagi setelah mengikuti program SIB ini.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project">
+                    <div class="project-title">Fullstack Website Development Restaurant</div>
+                    <img src="projek2.JPG" alt="Fullstack Restaurant Website">
+                    <p class="project-description">Saya membuat website restaurant fullstack dengan PHP, CSS,
+                        JS, dan MySQL untuk manajemen menu, transaksi, dan pengelolaan data pesanan.</p>
+                    <a href="https://github.com/Kurniaram/Restaurant.git" target="_blank" class="btn-project">See
+                        Project</a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project">
+                    <div class="project-title">Front-End Website Development Warung Soto</div>
+                    <img src="projek1.JPG" alt="Warung Soto Website">
+                    <p class="project-description">Projek ini menggunakan HTML, CSS, dan JS saja untuk tampilan website
+                        yang interaktif dan responsif untuk memesan makanan di Warung Soto Koyor.</p>
+                    <a href="https://github.com/Kurniaram/sotokoyor-pakudik.git" target="_blank" class="btn-project">See
+                        Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="mb-3 position-relative">
+                    <input type="text" class="form-control" placeholder=" " required>
+                    <label>Your Name</label>
+                </div>
+                <div class="mb-3 position-relative">
+                    <input type="email" class="form-control" id="emailInput" placeholder=" " required>
+                    <label>Your Email</label>
+                </div>
+                <div class="mb-3 position-relative">
+                    <textarea class="form-control" rows="5" placeholder=" " required></textarea>
+                    <label>Your Message</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <center>
+            <p>&copy; 2024 Kurnia Ramadhan. All Rights Reserved.</p>
+        </center>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/yourphonenumber" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Instagram Button -->
+    <a href="https://www.instagram.com/kramadhannn/" class="instagram-btn" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript for Scroll Effects -->
+    <script>
+        // Shrink Navbar on Scroll
+        window.addEventListener("scroll", function () {
+            const navbar = document.querySelector(".navbar-custom");
+            if (window.scrollY > 100) {
+                navbar.classList.add("navbar-shrink");
+            } else {
+                navbar.classList.remove("navbar-shrink");
+            }
+        });
+
+        // Section visibility on scroll
+        document.addEventListener("scroll", function () {
+            const sections = document.querySelectorAll("section");
+            sections.forEach(section => {
+                const sectionPos = section.getBoundingClientRect().top;
+                if (sectionPos < window.innerHeight - 100) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            const formControls = document.querySelectorAll('.form-control');
+            formControls.forEach(control => {
+                control.value = ''; // Clear the input fields
+            });
+
+            alert('Message sent! Thank you for contacting me.'); // Show a success message
+        });
+    </script>
+</body>
+
+</html>
